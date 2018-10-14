@@ -1,0 +1,26 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source: 
+    repository: node
+    tag: 6
+
+inputs:
+  - name: version
+  - name: philipshome
+
+outputs:
+  - name: artifactory-repository
+
+params:
+  ARTIFACTORY_USER:
+  ARTIFACTORY_PW:
+  ARTIFACTORY_URL:
+
+caches:
+  - path: node_modules
+
+run:
+  path: ./philipshome/ci/scripts/run_build.sh
